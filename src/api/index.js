@@ -1,6 +1,7 @@
 const express = require('express');
 
 const utilisateur = require('./utilisateur');
+const authentification = require('./authentification');
 
 const router = express.Router();
 
@@ -11,5 +12,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/utilisateur', utilisateur);
+router.use('/authentification', authentification);
 
 module.exports = router;
