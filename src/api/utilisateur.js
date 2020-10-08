@@ -40,13 +40,29 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+/*router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
   console.log(id)
-  /*return (id === 1)
-      ? res.json({ message: user1 }) : (id === 2 ) ? res.json({ message: user2 }) :
-          (id === 3 ) ? res.json({ message: user3 }) : next() ;*/
   return res.json({ message: user1 });
+});*/
+
+router.get('/me', async (req, res, next) => {
+  try {
+    let {authorization} = req.headers ;
+    const oldToken = authorization.split(" ")[1] ;
+    const user = (oldToken === "client") ? user2
+        : (oldToken === "coiffeur") ? user1
+            : user3 ;
+    /*if (!user || !(await bcrypt.compare(password, user.hash)))
+        throw 'Username or password is incorrect';*/
+
+    // authentication successful
+    // const token = jwt.sign({sub: user.id}, config.secret, {expiresIn: '7d'});
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTYwMjE1MDEwNCwiZXhwIjoxNjAyNzU0OTA0fQ.c70Szzp5MfPbd-zVPbvPkhhquZIxzj0ScQSaEsWprL8";
+    return res.json({...user, token});
+  } catch (e) {
+    return next(e);
+  }
 });
 
 module.exports = router;
