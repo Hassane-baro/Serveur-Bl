@@ -43,8 +43,8 @@ router.post('/', async (req, res, next) => {
             throw 'Username or password is incorrect';*/
 
         // authentication successful
-        // const token = jwt.sign({sub: user.id}, config.secret, {expiresIn: '7d'});
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTYwMjE1MDEwNCwiZXhwIjoxNjAyNzU0OTA0fQ.c70Szzp5MfPbd-zVPbvPkhhquZIxzj0ScQSaEsWprL8";
+        const token = jwt.sign({sub: user.id}, config.secret, {expiresIn: '7d'});
+        // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTYwMjE1MDEwNCwiZXhwIjoxNjAyNzU0OTA0fQ.c70Szzp5MfPbd-zVPbvPkhhquZIxzj0ScQSaEsWprL8";
         return res.json({... user, token});
     } catch (e) {
         return next(e);
