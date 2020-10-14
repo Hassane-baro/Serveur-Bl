@@ -34,14 +34,16 @@ const tabCoiffeur = [{
   prenom:"Coiffeur1",
   profil:"COIFFEUR",
   longitude:"124",
-  latitude:"124"
+  latitude:"124",
+  img:"https://www.buuyers.com/uploads/pro-logo/coiffeur-coiffure-lysiane-1-logo.jpg"
 },{
   id:5,
   nom:"Coiffeur2",
   prenom:"Coiffeur2",
   profil:"COIFFEUR",
   longitude:"122",
-  latitude:"122"
+  latitude:"122",
+  img:"https://www.buuyers.com/uploads/pro-logo/coiffeur-coiffure-lysiane-1-logo.jpg"
 } ];
 
 router.get('/', async (req, res, next) => {
